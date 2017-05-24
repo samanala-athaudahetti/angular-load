@@ -116,6 +116,20 @@ angular.module('angularLoad', []).service('angularLoad', ['$document', '$q', '$t
 			return promises[url];
 		};
 	}
+    
+    /**
+  * Dynamically loads the given script contect
+  * @param contect The script contect to load dynamically
+  * @returns {*} Promise that will be resolved once the script has been loaded.
+  */
+	this.loadScriptContent = loader(function (contect) {
+		var script = document.createElement('script');
+
+		script.innerHTML = contect;
+
+		document.body.appendChild(script);
+		return script;
+	});
 
 	/**
   * Dynamically loads the given script
